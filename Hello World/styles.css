@@ -1,0 +1,100 @@
+@-webkit-keyframes flicker {
+  0% {
+    transform: scale(calc(var(--scale)));
+  }
+  100% {
+    transform: scale(calc(var(--scale)), calc(var(--scale) * 1.2));
+  }
+}
+@keyframes flicker {
+  0% {
+    transform: scale(calc(var(--scale)));
+  }
+  100% {
+    transform: scale(calc(var(--scale)), calc(var(--scale) * 1.2));
+  }
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  min-width: 500px;
+}
+
+button {
+  border: 0.1em solid black;
+  background: white;
+  font-size: 3rem;
+  border-radius: 0.25em;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: sans-serif;
+  padding: 0.25em 0.5em;
+  font-weight: 600;
+}
+button:hover {
+  background-color: #ff0033;
+}
+
+.container {
+  display: flex;
+  width: max(80vw, 625px);
+  width: 800px;
+  margin: 100px auto 0;
+  justify-content: space-between;
+}
+
+.punchy,
+.star {
+  font-size: 7.5rem;
+}
+
+.punchy {
+  position: relative;
+  z-index: 200;
+}
+.punchy .handy {
+  position: relative;
+  z-index: 200;
+}
+.punchy .supersaiyan {
+  --scale: 0;
+  position: absolute;
+  font-size: 1.5em;
+  top: -0.35em;
+  left: -0.1em;
+  z-index: 100;
+  transition: 250ms ease-out;
+  -webkit-animation: flicker infinite linear 0.125s;
+          animation: flicker infinite linear 0.125s;
+  transform-origin: 50% 90%;
+}
+.super .punchy .supersaiyan {
+  opacity: 1;
+  --scale: 1;
+}
+.superduper .punchy .supersaiyan {
+  filter: invert(1);
+  --scale: 1.5;
+}
+
+.star {
+  position: relative;
+  z-index: 100;
+  opacity: 0;
+}
+
+#logger {
+  --perc: 25;
+  width: 400px;
+  height: 1em;
+  background: #ffffff;
+  border: 1px solid black;
+  color: #ff0032;
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 1em;
+  background-image: linear-gradient(to right, #f64f59 0%, #c471ed, #12c2e9 calc(var(--perc) * 0.66%, #ffffff calc(var(--perc) * 1%)));
+}
